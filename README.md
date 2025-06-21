@@ -1,5 +1,19 @@
 # Análise SQL de Vendas no E-commerce Brasileiro da Olist
 
+## 1. Quais são os 10 produtos mais vendidos em volume (quantidade)?
+
+```sql
+SELECT 
+    p.product_category_name AS categoria_produto,
+    COUNT(*) AS numero_vendas
+FROM order_items oi
+JOIN products p
+    ON p.product_id = oi.product_id
+GROUP BY p.product_category_name
+ORDER BY numero_vendas DESC
+LIMIT 10;
+```
+
 🛍️ 1. Produtos & Categorias
 Q5. Quais são os 10 produtos mais vendidos em volume (quantidade)?
 → Group by product_id, count() em order_items.*
