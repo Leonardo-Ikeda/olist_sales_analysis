@@ -55,28 +55,34 @@ O resultado da Query está apresentado abaixo:
 | GO     |   294.591,95     |
 | ES     |   275.037,31     |
 
+## 3. Qual estado brasileiro tem mais clientes?
+
+```sql
+SELECT 
+	c.customer_state AS estado,
+	COUNT(DISTINCT o.customer_id) AS numero_clientes
+FROM orders o
+JOIN customers c
+	ON o.customer_id = c.customer_id
+GROUP BY c.customer_state
+ORDER BY numero_clientes DESC
+LIMIT 1
+;
+```
+
+Resultado:
+
+| estado | numero_clientes |
+|--------|-----------------|
+| SP     | 41.746          |
 
 
 
-🛍️ 1. Produtos & Categorias
-Q5. Quais são os 10 produtos mais vendidos em volume (quantidade)?
-→ Group by product_id, count() em order_items.*
 
-Q6. Quais são as 5 categorias com maior faturamento total?
-→ Join order_items → products, somar price, group by product_category_name.
 
-Q7. Qual é o preço médio dos produtos por categoria?
-→ Group by categoria, avg(price).
 
-Q8. Quais produtos geraram mais receita?
-→ Somar price por product_id.
 
-🧑‍🤝‍🧑 2. Clientes & Regiões
-Q9. Qual estado brasileiro tem mais clientes?
-→ Group by customer_state, count() em customers.*
 
-Q10. Qual estado gerou mais receita?
-→ Join customers → orders → order_items, group by customer_state, somar price.
 
 Q11. Qual é a média de valor gasto por cliente em cada estado?
 → Group by estado, usar avg(total gasto por cliente).
