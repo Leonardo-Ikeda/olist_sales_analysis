@@ -1,32 +1,28 @@
 # Análise SQL de Vendas no E-commerce Brasileiro da Olist
 
-## 1. Quais são as 10 categorias mais vendidos em volume (quantidade)?
+## 1. Quais são as 5 categorias com maior faturamento total?
 
 ```sql
 SELECT 
-    p.product_category_name AS categoria_produto,
-    COUNT(*) AS numero_vendas
+	product_category AS categoria_produto,
+	SUM(price) AS faturamento_total
 FROM order_items oi
 JOIN products p
-    ON p.product_id = oi.product_id
-GROUP BY p.product_category_name
-ORDER BY numero_vendas DESC
-LIMIT 10;
+	ON p.product_id = oi.product_id
+GROUP BY product_category
+ORDER BY faturamento_total DESC
+LIMIT 5
+;
 ```
 O resultado da Query está apresentado abaixo:
 
-| categoria_produto         | numero_vendas |
-|---------------------------|---------------|
-| cama_mesa_banho           | 11.115        |
-| beleza_saude              | 9.670         |
-| esporte_lazer             | 8.641         |
-| moveis_decoracao          | 8.334         |
-| informatica_acessorios    | 7.827         |
-| utilidades_domesticas     | 6.964         |
-| relogios_presentes        | 5.991         |
-| telefonia                 | 4.545         |
-| ferramentas_jardim        | 4.347         |
-| automotivo                | 4.235         |
+| categoria_produto         | faturamento_total (R$) |
+|---------------------------|------------------------|
+| beleza_saude              | 1.258.681,34           |
+| relogios_presentes        | 1.205.005,68           |
+| cama_mesa_banho           | 1.036.988,68           |
+| esporte_lazer             |   988.048,97           |
+| informatica_acessorios    |   911.954,32           |
 
 
 
