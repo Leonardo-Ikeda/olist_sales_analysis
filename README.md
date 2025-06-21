@@ -1,6 +1,6 @@
 # Análise SQL de Vendas no E-commerce Brasileiro da Olist
 
-## 1. Quais são os 10 produtos mais vendidos em volume (quantidade)?
+## 1. Quais são as 10 categorias mais vendidos em volume (quantidade)?
 
 ```sql
 SELECT 
