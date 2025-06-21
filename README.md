@@ -76,10 +76,36 @@ Resultado:
 |--------|-----------------|
 | SP     | 41.746          |
 
+## 4. Qual é a média de valor gasto por cliente em cada estado?
 
+```sql
+SELECT 
+	c.customer_state AS estado,
+	ROUND(AVG(freight_value + price),2) AS valor_medio_gasto
+FROM orders o
+JOIN customers c
+	ON c.customer_id = o.customer_id
+JOIN order_items oi
+	ON oi.order_id = o.order_id
+GROUP BY c.customer_state
+ORDER BY valor_medio_gasto DESC
+LIMIT 10
+;
+```
+Resultado:
 
-
-
+| estado | valor_medio_gasto/cliente (R$) |
+|--------|--------------------------------|
+| PB     | 234,20                         |
+| AL     | 216,73                  	  |
+| AC     | 213,80                  	  |
+| RO     | 207,04                  	  |
+| PA     | 201,53                  	  |
+| PI     | 199,51                  	  |
+| AP     | 198,33                  	  |
+| TO     | 194,78                  	  |
+| RR     | 193,55                  	  |
+| RN     | 192,62                  	  |
 
 
 
