@@ -24,6 +24,52 @@ O resultado da Query está apresentado abaixo:
 | esporte_lazer             |   988.048,97           |
 | informatica_acessorios    |   911.954,32           |
 
+## 2. Qual é o faturamento total por estado brasileiro (UF)?
+
+```sql
+SELECT 
+    c.customer_state AS estado,
+    SUM(oi.price) AS faturamento
+FROM customers c
+JOIN orders o 
+    ON o.customer_id = c.customer_id
+JOIN order_items oi
+    ON oi.order_id = o.order_id
+GROUP BY c.customer_state
+ORDER BY faturamento DESC;
+```
+O resultado da Query está apresentado abaixo:
+
+| estado | faturamento (R$) |
+|--------|------------------|
+| SP     | 5.202.955,05     |
+| RJ     | 1.824.092,67     |
+| MG     | 1.585.308,03     |
+| RS     |   750.304,02     |
+| PR     |   683.083,76     |
+| SC     |   520.553,34     |
+| BA     |   511.349,99     |
+| DF     |   302.603,94     |
+| GO     |   294.591,95     |
+| ES     |   275.037,31     |
+| PE     |   262.788,03     |
+| CE     |   227.254,71     |
+| PA     |   178.947,81     |
+| MT     |   156.453,53     |
+| MA     |   119.648,22     |
+| MS     |   116.812,64     |
+| PB     |   115.268,08     |
+| PI     |    86.914,08     |
+| RN     |    83.034,98     |
+| AL     |    80.314,81     |
+| SE     |    58.920,85     |
+| TO     |    49.621,74     |
+| RO     |    46.140,64     |
+| AM     |    22.356,84     |
+| AC     |    15.982,95     |
+| AP     |    13.474,30     |
+| RR     |     7.829,43     |
+
 
 
 🛍️ 1. Produtos & Categorias
