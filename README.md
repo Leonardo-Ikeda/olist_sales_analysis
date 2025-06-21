@@ -13,6 +13,22 @@ GROUP BY p.product_category_name
 ORDER BY numero_vendas DESC
 LIMIT 10;
 ```
+O resultado da Query está apresentado abaixo:
+
+| categoria_produto         | numero_vendas |
+|---------------------------|---------------|
+| cama_mesa_banho           | 11.115        |
+| beleza_saude              | 9.670         |
+| esporte_lazer             | 8.641         |
+| moveis_decoracao          | 8.334         |
+| informatica_acessorios    | 7.827         |
+| utilidades_domesticas     | 6.964         |
+| relogios_presentes        | 5.991         |
+| telefonia                 | 4.545         |
+| ferramentas_jardim        | 4.347         |
+| automotivo                | 4.235         |
+
+
 
 🛍️ 1. Produtos & Categorias
 Q5. Quais são os 10 produtos mais vendidos em volume (quantidade)?
