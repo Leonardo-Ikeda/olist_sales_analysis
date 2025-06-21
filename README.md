@@ -28,15 +28,17 @@ O resultado da Query está apresentado abaixo:
 
 ```sql
 SELECT 
-    c.customer_state AS estado,
-    SUM(oi.price) AS faturamento
+	c.customer_state AS estado,
+	SUM(oi.price) AS faturamento
 FROM customers c
 JOIN orders o 
-    ON o.customer_id = c.customer_id
+	ON o.customer_id = c.customer_id
 JOIN order_items oi
-    ON oi.order_id = o.order_id
+	ON oi.order_id = o.order_id
 GROUP BY c.customer_state
-ORDER BY faturamento DESC;
+ORDER BY faturamento DESC
+LIMIT 10
+;
 ```
 O resultado da Query está apresentado abaixo:
 
@@ -52,23 +54,7 @@ O resultado da Query está apresentado abaixo:
 | DF     |   302.603,94     |
 | GO     |   294.591,95     |
 | ES     |   275.037,31     |
-| PE     |   262.788,03     |
-| CE     |   227.254,71     |
-| PA     |   178.947,81     |
-| MT     |   156.453,53     |
-| MA     |   119.648,22     |
-| MS     |   116.812,64     |
-| PB     |   115.268,08     |
-| PI     |    86.914,08     |
-| RN     |    83.034,98     |
-| AL     |    80.314,81     |
-| SE     |    58.920,85     |
-| TO     |    49.621,74     |
-| RO     |    46.140,64     |
-| AM     |    22.356,84     |
-| AC     |    15.982,95     |
-| AP     |    13.474,30     |
-| RR     |     7.829,43     |
+
 
 
 
